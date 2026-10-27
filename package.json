@@ -1,5 +1,5 @@
 {
-  "name": "akatsuki-draft",
+  "name": "co_share",
   "version": "1.0.0",
   "description": "Akatsuki's Draft: AI-Enabled Content Sharing Platform backend",
   "main": "src/server.js",
