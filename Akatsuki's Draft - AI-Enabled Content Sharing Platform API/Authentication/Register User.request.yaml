@@ -1,0 +1,22 @@
+$kind: http-request
+url: "{{baseUrl}}/auth/register"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: text
+  content: |-
+    {
+      "name": "Pain (Nagato)",
+      "email": "nagato@akatsuki.dev",
+      "password": "ShinraTensei2026!"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      var jsonData = pm.response.json();
+      if (jsonData.success && jsonData.data && jsonData.data.token) {
+          pm.collectionVariables.set('userToken', jsonData.data.token);
+      }
+    language: text/javascript
+order: 1000

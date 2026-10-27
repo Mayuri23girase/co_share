@@ -1,0 +1,6 @@
+$kind: http-request
+url: "{{baseUrl}}/ai/improve/{{postId}}"
+method: POST
+headers:
+  Authorization: Bearer {{userToken}}
+order: 1000

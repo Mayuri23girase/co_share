@@ -1,0 +1,6 @@
+$kind: http-request
+url: "{{baseUrl}}/auth/me"
+method: GET
+headers:
+  Authorization: Bearer {{userToken}}
+order: 4000

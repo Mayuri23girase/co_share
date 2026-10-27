@@ -1,0 +1,4 @@
+$kind: http-request
+url: "{{baseUrl}}/posts/{{postId}}"
+method: GET
+order: 6000

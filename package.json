@@ -1,0 +1,39 @@
+{
+  "name": "akatsuki-draft",
+  "version": "1.0.0",
+  "description": "Akatsuki's Draft: AI-Enabled Content Sharing Platform backend",
+  "main": "src/server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "dev:memory": "node -e \"process.env.USE_MEMORY_DB='true'; import('./src/server.js');\"",
+    "seed:admin": "node src/scripts/seedAdmin.js",
+    "test": "node --test test/*.test.js"
+  },
+  "keywords": [
+    "express",
+    "mongodb",
+    "gemini",
+    "jwt",
+    "content-sharing"
+  ],
+  "author": "Google DeepMind Antigravity Team",
+  "license": "ISC",
+  "dependencies": {
+    "@google/genai": "^2.31.0",
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.5",
+    "dotenv": "^17.3.1",
+    "express": "^4.22.1",
+    "express-validator": "^7.3.1",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.3.0",
+    "morgan": "^1.10.1",
+    "multer": "^1.4.5-lts.2"
+  },
+  "devDependencies": {
+    "mongodb-memory-server": "^11.3.0",
+    "nodemon": "^3.1.14"
+  }
+}

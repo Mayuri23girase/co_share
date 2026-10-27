@@ -1,0 +1,7 @@
+$kind: collection
+description: Comprehensive Postman collection covering all endpoints for Akatsuki's Draft backend.
+variables:
+  baseUrl: http://localhost:5000
+  userToken: ""
+  adminToken: ""
+  postId: ""

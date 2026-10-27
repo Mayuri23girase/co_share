@@ -1,0 +1,13 @@
+$kind: http-request
+name: Improve Post with Document Context (PDF/Text)
+url: "{{baseUrl}}/ai/improve/{{postId}}"
+method: POST
+headers:
+  Authorization: Bearer {{userToken}}
+body:
+  type: formdata
+  content:
+    - type: file
+      key: document
+      src: ""
+order: 2000

@@ -1,0 +1,6 @@
+$kind: http-request
+url: "{{baseUrl}}/admin/posts/approve/{{postId}}"
+method: PATCH
+headers:
+  Authorization: Bearer {{adminToken}}
+order: 2000

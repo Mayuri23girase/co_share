@@ -1,0 +1,6 @@
+$kind: http-request
+url: "{{baseUrl}}/posts?search=peace"
+method: GET
+queryParams:
+  search: peace
+order: 4000

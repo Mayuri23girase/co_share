@@ -1,0 +1,14 @@
+$kind: http-request
+url: "{{baseUrl}}/posts/{{postId}}"
+method: PATCH
+headers:
+  Authorization: Bearer {{userToken}}
+  Content-Type: application/json
+body:
+  type: text
+  content: |-
+    {
+      "title": "True Peace Through Mutual Understanding - Revised",
+      "status": "pending"
+    }
+order: 7000

@@ -1,0 +1,146 @@
+### ========================================================
+### Akatsuki's Draft: AI-Enabled Content Sharing Platform
+### HTTP Request Test File (for VS Code REST Client / JetBrains)
+### ========================================================
+
+@baseUrl = http://localhost:5000
+@userToken = your_user_jwt_token_here
+@adminToken = your_admin_jwt_token_here
+@postId = your_post_id_here
+
+### 1. Health Check
+GET {{baseUrl}}/
+Accept: application/json
+
+### ========================================================
+### 2. AUTHENTICATION FLOW
+### ========================================================
+
+### 2.1 Register Normal User
+# @name registerUser
+POST {{baseUrl}}/auth/register
+Content-Type: application/json
+
+{
+  "name": "Itachi Uchiha",
+  "email": "itachi@akatsuki.dev",
+  "password": "MangekyoPassword2026!"
+}
+
+### 2.2 Login as Normal User
+# @name loginUser
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "itachi@akatsuki.dev",
+  "password": "MangekyoPassword2026!"
+}
+
+### 2.3 Login as Admin (Run `npm run seed:admin` first)
+# @name loginAdmin
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin@akatsuki.dev",
+  "password": "AdminSecurePass123!"
+}
+
+### 2.4 Get Profile (Me)
+GET {{baseUrl}}/auth/me
+Authorization: Bearer {{userToken}}
+
+### ========================================================
+### 3. USER POST MANAGEMENT
+### ========================================================
+
+### 3.1 Create Post (Draft)
+# @name createDraftPost
+POST {{baseUrl}}/posts
+Authorization: Bearer {{userToken}}
+Content-Type: application/json
+
+{
+  "title": "Philosophy of Sacrifice and Peace",
+  "description": "Thoughts on enduring hardship and protecting the realm from shadows.",
+  "content": "People live their lives bound by what they accept as correct and true. That is how they define reality. But what does it mean to be correct or true? Merely vague concepts. Their reality may all be a mirage. Can we consider them to be simply living in their own world, shaped by their beliefs?",
+  "category": "philosophy",
+  "status": "draft"
+}
+
+### 3.2 Create Post (Pending Review)
+# @name createPendingPost
+POST {{baseUrl}}/posts
+Authorization: Bearer {{userToken}}
+Content-Type: application/json
+
+{
+  "title": "Mastering Distributed Microservices in Node.js",
+  "description": "A comprehensive deep dive into event-driven architecture, caching, and resiliency.",
+  "content": "When scaling Node.js backends beyond single machines, horizontal scaling requires stateless services, Redis distributed locks, and robust message queues such as RabbitMQ or Kafka.",
+  "category": "engineering",
+  "status": "pending"
+}
+
+### 3.3 Get Public Feed of Approved Posts (with pagination)
+GET {{baseUrl}}/posts?page=1&limit=10&category=philosophy
+
+### 3.4 Search Approved Posts
+GET {{baseUrl}}/posts?search=sacrifice
+
+### 3.5 Get Logged-in User's Posts and Drafts (all statuses)
+GET {{baseUrl}}/posts/my-posts?page=1&limit=10
+
+### 3.6 Get Approved Post By ID (404 if draft/pending/rejected)
+GET {{baseUrl}}/posts/{{postId}}
+
+### 3.7 Update Own Post (e.g. submit draft to pending)
+PATCH {{baseUrl}}/posts/{{postId}}
+Authorization: Bearer {{userToken}}
+Content-Type: application/json
+
+{
+  "title": "Philosophy of Sacrifice and Peace (Revised)",
+  "status": "pending"
+}
+
+### 3.8 Delete Own Post
+DELETE {{baseUrl}}/posts/{{postId}}
+Authorization: Bearer {{userToken}}
+
+### ========================================================
+### 4. ADMIN OPERATIONS (Requires Admin JWT)
+### ========================================================
+
+### 4.1 List Pending Posts
+GET {{baseUrl}}/admin/posts/pending?page=1&limit=10
+Authorization: Bearer {{adminToken}}
+
+### 4.2 Approve Pending Post
+PATCH {{baseUrl}}/admin/posts/approve/{{postId}}
+Authorization: Bearer {{adminToken}}
+
+### 4.3 Reject Pending Post
+PATCH {{baseUrl}}/admin/posts/reject/{{postId}}
+Authorization: Bearer {{adminToken}}
+
+### ========================================================
+### 5. AI IMPROVEMENT (Gemini API)
+### ========================================================
+
+### 5.1 Improve Post via Gemini AI (Creates a New Draft Post)
+POST {{baseUrl}}/ai/improve/{{postId}}
+Authorization: Bearer {{userToken}}
+
+### 5.2 Improve Post with Document Context (Multipart/form-data)
+POST {{baseUrl}}/ai/improve/{{postId}}
+Authorization: Bearer {{userToken}}
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="document"; filename="context.txt"
+Content-Type: text/plain
+
+Include historical perspective from the Third Great Ninja War and highlight pacifist diplomacy.
+--WebAppBoundary--

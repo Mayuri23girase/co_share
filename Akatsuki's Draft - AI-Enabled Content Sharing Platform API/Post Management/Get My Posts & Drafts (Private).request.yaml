@@ -1,0 +1,6 @@
+$kind: http-request
+url: "{{baseUrl}}/posts/my-posts"
+method: GET
+headers:
+  Authorization: Bearer {{userToken}}
+order: 5000

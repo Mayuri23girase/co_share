@@ -1,0 +1,8 @@
+$kind: http-request
+url: http://localhost:5000/posts/my-posts
+method: GET
+auth:
+  type: bearer
+  credentials:
+    token: "{{json_web_token_06hf}}"
+order: 4000

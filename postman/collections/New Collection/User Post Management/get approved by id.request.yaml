@@ -1,0 +1,4 @@
+$kind: http-request
+url: http://localhost:5000/posts/6ae0ef0242176928340712d5
+method: GET
+order: 447

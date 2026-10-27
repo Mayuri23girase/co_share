@@ -1,0 +1,8 @@
+$kind: http-request
+url: "{{baseUrl}}/posts?page=1&limit=10&category=philosophy"
+method: GET
+queryParams:
+  page: "1"
+  limit: "10"
+  category: philosophy
+order: 3000

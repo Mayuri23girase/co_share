@@ -1,0 +1,13 @@
+# Use this workspace to collaborate
+workspace:
+  id: b19c6710-52cd-48ec-b10e-079f06ce8a73
+
+localResources:
+  collections:
+    - ../Akatsuki's Draft - AI-Enabled Content Sharing Platform API
+
+# Each entry here maps a local resource to one or more corresponding objects in Postman Cloud
+
+cloudResources:
+  collections:
+    ../Akatsuki's Draft - AI-Enabled Content Sharing Platform API: a90e3814-2391-4e78-9572-c2cb89f5c229

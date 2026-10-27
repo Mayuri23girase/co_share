@@ -1,0 +1,17 @@
+$kind: http-request
+url: "{{baseUrl}}/posts"
+method: POST
+headers:
+  Authorization: Bearer {{userToken}}
+  Content-Type: application/json
+body:
+  type: text
+  content: |-
+    {
+      "title": "Architecting Resilient Cloud APIs",
+      "description": "Best practices for high availability, fault tolerance, and security in microservice architectures.",
+      "content": "Designing modern distributed systems demands idempotent APIs, circuit breakers, and comprehensive rate limiting. Here are actionable patterns implemented across production clusters.",
+      "category": "technology",
+      "status": "pending"
+    }
+order: 2000

@@ -1,0 +1,25 @@
+$kind: http-request
+url: "{{baseUrl}}/posts"
+method: POST
+headers:
+  Authorization: Bearer {{userToken}}
+  Content-Type: application/json
+body:
+  type: text
+  content: |-
+    {
+      "title": "True Peace Through Mutual Understanding",
+      "description": "An essay discussing ideological conflicts and philosophical solutions to end global strife.",
+      "content": "Conflict has plague humanity since centuries. People fight because they do not understand each other pain. True peace can only be achieve when mutual pain is experienced and recognized. In this draft we explore three pillars: empathy, justice, and collective understanding.",
+      "category": "philosophy",
+      "status": "draft"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      var jsonData = pm.response.json();
+      if (jsonData.success && jsonData.data && jsonData.data.post) {
+          pm.collectionVariables.set('postId', jsonData.data.post._id);
+      }
+    language: text/javascript
+order: 1000
