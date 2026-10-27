@@ -27,12 +27,12 @@ const startServer = async () => {
   }
 
   const server = app.listen(PORT, () => {
-    console.log(`=======================================================`);
-    console.log(` Akatsuki's Draft API Server running on port ${PORT}`);
-    console.log(` Mode: ${process.env.NODE_ENV || 'development'}`);
-    console.log(` Gemini Model: ${process.env.GEMINI_MODEL || 'gemini-3.8-flash'}`);
+    // console.log(`=======================================================`);
+    console.log(` co_share server running on port ${PORT}`);
+    // console.log(` Mode: ${process.env.NODE_ENV || 'development'}`);
+    // console.log(` Gemini Model: ${process.env.GEMINI_MODEL || 'gemini-3.8-flash'}`);
     console.log(` URL: http://localhost:${PORT}`);
-    console.log(`=======================================================`);
+    // console.log(`=======================================================`);
   });
 
   // Handle server-level errors such as port collisions
