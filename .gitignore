@@ -31,3 +31,8 @@ Thumbs.db
 # Testing & Coverage
 coverage/
 .nyc_output/
+
+.env
+node_modules/
+__pycache__/
+.venv/
